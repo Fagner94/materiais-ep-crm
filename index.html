@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Procedimentos e Materiais - EP & CRM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --primary: #1f6feb;
+      --primary-soft: #e2edff;
+      --text: #111827;
+      --muted: #6b7280;
+      --radius: 16px;
+      --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 24px 16px;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 1.7rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #9ca3af;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0 0;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      font-size: 0.82rem;
+      cursor: pointer;
+      background: transparent;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab img {
+      height: 18px;
+      width: auto;
+      border-radius: 4px;
+      background: #ffffff;
+      padding: 2px;
+    }
+
+    .tab.active {
+      background: #e5e7eb;
+      color: #111827;
+      border-color: transparent;
+    }
+
+    main {
+      padding: 20px 16px 40px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin: 8px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title span.tag {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .card small {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    details {
+      margin-top: 8px;
+      font-size: 0.88rem;
+    }
+
+    details summary {
+      cursor: pointer;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    ul.material-list {
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+
+    ul.material-list li {
+      margin-bottom: 4px;
+    }
+
+    .links {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .link-pill {
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      text-decoration: none;
+      color: #374151;
+      background: #f9fafb;
+    }
+
+    .link-pill.primary {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      padding: 8px 16px 18px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Procedimentos & Materiais – EP & CRM</h1>
+      <p>Acesso rápido para médicos: descrição dos procedimentos e lista de materiais em um único link.</p>
+      <div class="tabs">
+        <button class="tab active" data-target="ep">
+          <img src="img/everpace.png" alt="EverPace logo">
+          Eletrofisiologia – MicroPort
+        </button>
+        <button class="tab" data-target="crm">
+          <img src="img/medtronic.png" alt="Medtronic logo">
+          CRM – Medtronic
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- EP MICROPORT -->
+      <section id="ep" class="section active">
+        <h2 class="section-title">
+          Eletrofisiologia – MicroPort
+          <span class="tag">EverPace</span>
+        </h2>
+
+        <div class="grid">
+
+          <article class="card">
+            <h3>Estudo Eletrofisiológico</h3>
+            <span class="chip">MicroPort · Diagnóstico</span>
+            <small>Cateteres diagnósticos decapolar e quadripolares.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Cateter Decapolar – EasyFinder™ Deca + conector</li>
+                <li>Cateter Quadripolar – EasyFinder™ Quad + conector (2x)</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/estudo_eletrofisiologico.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/estudo_eletrofisiologico.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Ablação Convencional</h3>
+            <span class="chip">MicroPort · RF</span>
+            <small>Cateter de ablação não irrigado.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Cateter de Ablação – FireMagic™ + conector</li>
+                <li>Cateter Decapolar – EasyFinder™ Deca + conector</li>
+                <li>Cateter Quadripolar – EasyFinder™ Quad + conector</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/ablacao_convencional.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/ablacao_convencional.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Ablação com Cateter Irrigado</h3>
+            <span class="chip">MicroPort · RF Irrigada</span>
+            <small>FireMagic™ 3D irrigado + equipo de irrigação.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Cateter de Ablação Irrigado – FireMagic™ 3D Irrigated + conector</li>
+                <li>Equipo de Irrigação – FireMagic™ Irrigation Set</li>
+                <li>Cateter Decapolar – EasyFinder™ Deca + conector</li>
+                <li>Cateter Quadripolar – EasyFinder™ Quad + conector</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/ablacao_irrigada.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/ablacao_irrigada.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Ablação com Punção Transeptal</h3>
+            <span class="chip">MicroPort · Punção Transeptal</span>
+            <small>Acesso transeptal com bainha e agulha dedicadas.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Cateter de Ablação – FireMagic™ + conector</li>
+                <li>Cateter Decapolar – EasyFinder™ Deca + conector</li>
+                <li>Cateter Quadripolar – EasyFinder™ Quad + conector</li>
+                <li>Bainha de Punção Transeptal</li>
+                <li>Agulha de Punção Transeptal</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/ablacao_puncao_transeptal.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/ablacao_puncao_transeptal.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Mapeamento 3D – Sistema EverPace</h3>
+            <span class="chip">MicroPort · 3D</span>
+            <small>EasyStar™ + ablador com força de contato e sistema EverPace.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Cateter de Navegação – EasyStar™ 3D Sensor</li>
+                <li>Conectores EasyStar™ (cabos de localização e sistema)</li>
+                <li>Cateter de Ablação com Força de Contato – FireMagic™ 3D Plus + conector</li>
+                <li>Cateter Decapolar – EasyFinder™ Deca + conector</li>
+                <li>Patch de Impedância – EverPace™ Impedance Patch</li>
+                <li>Patch de Referência – EverPace™ Reference Patch</li>
+                <li>Bainha Curva Fixa – EasySheath™ Fixed Curve</li>
+                <li>Bainha Defletiva – SureFlex™ Steering Introducer</li>
+                <li>Agulha de Punção</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/mapeamento_3d.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/mapeamento_3d.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- CRM MEDTRONIC -->
+      <section id="crm" class="section">
+        <h2 class="section-title">
+          CRM – Medtronic
+          <span class="tag">Astra · Azure · Serena · Evera · Amplia</span>
+        </h2>
+
+        <div class="grid">
+
+          <article class="card">
+            <h3>Implante de Marcapasso Convencional (Astra™)</h3>
+            <span class="chip">Medtronic · MP DDD</span>
+            <small>Bradicardia – câmara dupla.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Astra™</li>
+                <li>Eletrodo Ventricular – 5076-52</li>
+                <li>Eletrodo Atrial – 5076-58</li>
+                <li>Introdutor – 2</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/mp_convencional_astra.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/mp_convencional_astra.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de Marcapasso Fisiológico (His/CSP – Astra™)</h3>
+            <span class="chip">Medtronic · His / CSP</span>
+            <small>Estimulação de feixe de His / septal.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Astra™</li>
+                <li>Bainha His – C315™</li>
+                <li>Eletrodo His / Septal – 3830</li>
+                <li>Eletrodo Atrial – 5076-52</li>
+                <li>Ferramenta de Corte</li>
+                <li>Fio Guia</li>
+                <li>Introdutor – 2</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/mp_fisiologico_astra.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/mp_fisiologico_astra.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de Marcapasso Convencional com Monitoramento Remoto (Azure™)</h3>
+            <span class="chip">Medtronic · MP + Remote</span>
+            <small>Marcapasso de câmara dupla com monitoramento remoto.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Azure™</li>
+                <li>Eletrodo Ventricular – 5076-52</li>
+                <li>Eletrodo Atrial – 5076-58</li>
+                <li>Introdutor – 2</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/mp_convencional_azure.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/mp_convencional_azure.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de Marcapasso Fisiológico com Monitoramento Remoto (Azure™)</h3>
+            <span class="chip">Medtronic · His / CSP + Remote</span>
+            <small>Estimulação hisiana/septal com telemonitorização.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Azure™</li>
+                <li>Bainha His – C315™</li>
+                <li>Eletrodo His / Septal – 3830</li>
+                <li>Eletrodo Atrial – 5076-52</li>
+                <li>Ferramenta de Corte</li>
+                <li>Fio Guia</li>
+                <li>Introdutor – 2</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/mp_fisiologico_azure.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/mp_fisiologico_azure.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de Ressincronizador Convencional (CRT-P Serena™)</h3>
+            <span class="chip">Medtronic · CRT-P</span>
+            <small>Terapia de ressincronização biventricular convencional.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Serena™ CRT-P</li>
+                <li>Eletrodo Atrial – 5076-52</li>
+                <li>Eletrodo Ventricular Direito – 5076-58</li>
+                <li>Eletrodo Ventricular Esquerdo – 4298/4299</li>
+                <li>Bainha – 6250VIC</li>
+                <li>Ferramenta de Corte</li>
+                <li>Guia 0.014</li>
+                <li>Subseletora</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/crtp_serena.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/crtp_serena.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de Ressincronizador Septal (CRT-P Serena™)</h3>
+            <span class="chip">Medtronic · CRT-P · Septal</span>
+            <small>Ressincronização com estimulação septal / His.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Serena™ CRT-P</li>
+                <li>Eletrodo Atrial – 5076-52</li>
+                <li>Eletrodo Ventricular Direito – 5076-58</li>
+                <li>Eletrodo Septal – 3830</li>
+                <li>Bainha His – C315™</li>
+                <li>Ferramenta de Corte</li>
+                <li>Fio Guia</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/crtp_septal_serena.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/crtp_septal_serena.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de CDI (Evera™ DF4)</h3>
+            <span class="chip">Medtronic · ICD</span>
+            <small>Desfibrilador implantável transvenoso DF4.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Evera™ DF4</li>
+                <li>Eletrodo de Choque – 6935M-62 DFA</li>
+                <li>Eletrodo Atrial – 5076-52</li>
+                <li>Introdutor – 2</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/cdi_evera.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/cdi_evera.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de CDI Biventricular (CRT-D Amplia™)</h3>
+            <span class="chip">Medtronic · CRT-D</span>
+            <small>Desfibrilador biventricular para terapia de ressincronização.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Amplia™ CRT-D</li>
+                <li>Eletrodo Atrial – 5076-52</li>
+                <li>Eletrodo Ventricular Esquerdo – 4298/4299</li>
+                <li>Eletrodo de Choque – 6935M-62</li>
+                <li>Bainha – 6250VIC</li>
+                <li>Ferramenta de Corte</li>
+                <li>Guia 0.014</li>
+                <li>Subseletora</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/crtd_amplia.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/crtd_amplia.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Implante de CDI Biventricular Septal (CRT-D Amplia™)</h3>
+            <span class="chip">Medtronic · CRT-D · Septal</span>
+            <small>CRT-D com estimulação septal/His em VE.</small>
+
+            <details>
+              <summary>Ver materiais</summary>
+              <ul class="material-list">
+                <li>Gerador – Amplia™ CRT-D</li>
+                <li>Eletrodo Atrial – 5076-52</li>
+                <li>Eletrodo Septal – 3830</li>
+                <li>Eletrodo de Choque – 6935M-62</li>
+                <li>Bainha His – C315™</li>
+                <li>Ferramenta de Corte</li>
+                <li>Subseletora</li>
+                <li>Introdutor – 3</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a href="pdfs/crtd_amplia_septal.pdf" class="link-pill primary" download>
+                Solicitação em PDF
+              </a>
+              <a href="docs/crtd_amplia_septal.docx" class="link-pill">
+                Solicitação em Word
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    Página de apoio para solicitação de materiais – uso interno entre médico, OPME e representante.
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('.section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-target');
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(sec => sec.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
